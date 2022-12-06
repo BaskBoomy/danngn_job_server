@@ -36,7 +36,7 @@ export const isAuth = async (req: RequestData, res: Response, next: NextFunction
     jwt.verify(
         token,
         config.jwt.secretKey,
-        async (error:VerifyErrors | null,decoded: JwtPayload | undefined)=> {
+        async (error: any, decoded: any)=> {
             if (error) {
                 res.status(401).json(AUTH_ERROR);
             }else{

@@ -2,8 +2,11 @@ import { ObjectId } from "mongodb";
 import { Image } from "./jobs";
 import { Location } from "./location";
 import { Document } from "mongodb";
+import { Request } from "express";
 
-
+export interface RequestWithUserId extends Request{
+    userId?: string;
+}
 export interface User extends Document {
     myPlace:Location;
     phoneNumber:string;

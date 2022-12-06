@@ -6,7 +6,7 @@ import * as userRepository from '../data/auth.js';
 import * as likedJobPostRepository from '../data/likedJobPost.js';
 import * as Redis from '../database/redis.js';
 import { CookieOptions, Request, Response } from 'express';
-import { JSONResult, Signature } from '../types/auth.js';
+import { JSONResult, RequestWithUserId, Signature } from '../types/auth.js';
 import { JobPostLike } from '../types/likedJobPost.js';
 import { ObjectId } from 'mongodb';
 
@@ -44,7 +44,7 @@ export async function logout(req: Request, res: Response):Promise<void> {
     res.status(200).json({ message: '로그아웃 성공!' });
 }
 
-export async function me(req: Request, res: Response):Promise<void>{
+export async function me(req: RequestWithUserId, res: Response):Promise<void>{
     const user = await userRepository.findById(req.userId!);
     if (!user) {
         res.status(404).json({ message: '사용자를 찾을 수 없습니다!' });
@@ -53,7 +53,7 @@ export async function me(req: Request, res: Response):Promise<void>{
     }
 }
 
-export async function update(req: Request, res: Response):Promise<void> {
+export async function update(req: RequestWithUserId, res: Response):Promise<void> {
     try {
         const user = await userRepository.findById(req.userId!);
         const updateData = req.body.updateData;
@@ -72,14 +72,15 @@ export async function sendSMSCode(req: Request, res: Response):Promise<void> {
     const code = create6DigitCode();
     await saveAuthCode(`sms-code-${to}`, code)
         .then(async () => {
-            console.log(code);
-            return res.status(200).send({ result: 200 });
-            // const result = await sendMessage(to, code);
-            // if (result) {
-            //     return res.status(200).send({ message: "문자 발송 완료", result:200 });
-            // } else {
-            //     return res.status(500).send({ message: "문자 발송 실패", result:500 });
-            // }
+            // Test Code...
+            // console.log(code);
+            // return res.status(200).send({ result: 200 });
+            const result = await sendMessage(to, code);
+            if (result) {
+                return res.status(200).send({ message: "문자 발송 완료", result:200 });
+            } else {
+                return res.status(500).send({ message: "문자 발송 실패", result:500 });
+            }
         });
 }
 
@@ -98,14 +99,14 @@ export async function verifySMSCode(req: Request, res: Response):Promise<void> {
 }
 
 
-export async function getCurrentJobPostLikeStatus(req:Request, res: Response):Promise<void> {
+export async function getCurrentJobPostLikeStatus(req:RequestWithUserId, res: Response):Promise<void> {
     const jobPostId = req.query.jobPostId as string;
     const userId = req.userId as string;
     const isLike = await likedJobPostRepository.getIsLike(jobPostId, userId);
     res.status(200).json(isLike);
 }
 
-export async function updateJobPostLike(req: Request, res: Response):Promise<void>  {
+export async function updateJobPostLike(req: RequestWithUserId, res: Response):Promise<void>  {
     const jobPost = req.body.jobPost;
     const newJobPost:JobPostLike = {
         jobPostId: jobPost.id,
@@ -124,7 +125,7 @@ export async function updateJobPostLike(req: Request, res: Response):Promise<voi
     res.status(200).json(result);
 }
 
-export async function getLikedList(req: Request, res: Response):Promise<void>  {
+export async function getLikedList(req: RequestWithUserId, res: Response):Promise<void>  {
     const userId = req.userId as unknown as ObjectId;
     const result = await likedJobPostRepository.getLikedList(userId);
     if (result) {

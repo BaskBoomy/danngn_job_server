@@ -2,7 +2,7 @@ import express, { ErrorRequestHandler, NextFunction, Request, Response } from 'e
 import cors from 'cors';
 import helmet from 'helmet';
 import cookieParser from 'cookie-parser';
-import postRouter from './router/jobs.js';
+import jobRouter from './router/jobs.js';
 import authRouter from './router/auth.js';
 import locationRouter from './router/location.js';
 import {config} from './config.js';
@@ -25,7 +25,7 @@ app.use(express.static('public'));
 
 app.use('/auth', authRouter);
 app.use('/location', locationRouter);
-app.use('/jobs',postRouter);
+app.use('/jobs',jobRouter);
 
 app.post('/test',(req : Request,res: Response)=>{
     const time = req.body.time;
@@ -33,7 +33,7 @@ app.post('/test',(req : Request,res: Response)=>{
     res.json(result);
 })
 app.get('/', (req : Request,res: Response, next: NextFunction)=>{
-    res.send('Welcome to Carrot-Job Project.');
+    res.send('Welcome to Carrot-Job Project!!');
 })
 
 app.use((req : Request,res: Response, next: NextFunction)=>{
@@ -47,6 +47,6 @@ app.use((error: ErrorRequestHandler, req : Request,res: Response, next: NextFunc
 connectDB().then(db=>{
     console.log('DB에 연결되었습니다.');
     connectRedis();
-    app.listen(config.host.port);
+    app.listen(config.host.port, ()=> console.log("listening on port 8080"));
 })
 .catch(console.error);

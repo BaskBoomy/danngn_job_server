@@ -88,14 +88,16 @@ export function sendSMSCode(req, res) {
         const code = create6DigitCode();
         yield saveAuthCode(`sms-code-${to}`, code)
             .then(() => __awaiter(this, void 0, void 0, function* () {
-            console.log(code);
-            return res.status(200).send({ result: 200 });
-            // const result = await sendMessage(to, code);
-            // if (result) {
-            //     return res.status(200).send({ message: "문자 발송 완료", result:200 });
-            // } else {
-            //     return res.status(500).send({ message: "문자 발송 실패", result:500 });
-            // }
+            // Test Code...
+            // console.log(code);
+            // return res.status(200).send({ result: 200 });
+            const result = yield sendMessage(to, code);
+            if (result) {
+                return res.status(200).send({ message: "문자 발송 완료", result: 200 });
+            }
+            else {
+                return res.status(500).send({ message: "문자 발송 실패", result: 500 });
+            }
         }));
     });
 }
