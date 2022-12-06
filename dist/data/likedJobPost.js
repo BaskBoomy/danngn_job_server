@@ -56,4 +56,3 @@ function mapOptionalLike(data) {
         return data[index];
     });
 }
-//# sourceMappingURL=likedJobPost.js.map

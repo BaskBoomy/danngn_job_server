@@ -101,4 +101,3 @@ function sortByDistance(a, b) {
     }
     return a.directDistance > b.directDistance ? 1 : -1;
 }
-//# sourceMappingURL=location.js.map

@@ -73,4 +73,3 @@ export function search(req, res) {
         }
     });
 }
-//# sourceMappingURL=jobs.js.map

@@ -45,4 +45,3 @@ connectDB().then(db => {
     app.listen(config.host.port, () => console.log("listening on port 8080"));
 })
     .catch(console.error);
-//# sourceMappingURL=app.js.map

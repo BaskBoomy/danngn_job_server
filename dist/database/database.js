@@ -30,4 +30,3 @@ export function getJobs() {
 export function getLike() {
     return db.collection('like');
 }
-//# sourceMappingURL=database.js.map

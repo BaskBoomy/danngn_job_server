@@ -13,4 +13,3 @@ router.post('/verifySMSCode', authController.verifySMSCode);
 router.post('/updateJobPostLike', isAuth, authController.updateJobPostLike);
 router.put('/update', isAuth, authController.update);
 export default router;
-//# sourceMappingURL=auth.js.map

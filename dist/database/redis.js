@@ -44,4 +44,3 @@ export function disconnect() {
         yield client.disconnect();
     });
 }
-//# sourceMappingURL=redis.js.map

@@ -41,4 +41,3 @@ export const config = {
         grs80: required('COORDINATE_CONVERT_GRS80'),
     }
 };
-//# sourceMappingURL=config.js.map

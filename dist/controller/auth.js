@@ -241,4 +241,3 @@ function setToken(res, token) {
     };
     res.cookie('token', token, options);
 }
-//# sourceMappingURL=auth.js.map

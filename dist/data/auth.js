@@ -42,4 +42,3 @@ export function update(id, updateData) {
 function mapOptionalUser(data) {
     return data ? Object.assign(Object.assign({}, data), { id: data._id }) : data;
 }
-//# sourceMappingURL=auth.js.map

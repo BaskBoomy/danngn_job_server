@@ -108,4 +108,3 @@ function mapOptionalJobs(data) {
         data[index].id = data[index]._id;
     }) : data;
 }
-//# sourceMappingURL=jobs.js.map

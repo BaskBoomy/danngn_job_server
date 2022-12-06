@@ -51,4 +51,3 @@ function mapOptionalLocation(data) {
         };
     });
 }
-//# sourceMappingURL=location.js.map

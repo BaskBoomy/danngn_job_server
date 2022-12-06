@@ -61,4 +61,3 @@ export const authHandler = (req) => __awaiter(void 0, void 0, void 0, function* 
         throw Object.assign({ status: 401 }, AUTH_ERROR);
     }
 });
-//# sourceMappingURL=auth.js.map

@@ -6,4 +6,3 @@ router.get('/:id', jobsController.getJobById);
 router.post('/createJob', jobsController.createJob);
 router.post('/search', jobsController.search);
 export default router;
-//# sourceMappingURL=jobs.js.map
