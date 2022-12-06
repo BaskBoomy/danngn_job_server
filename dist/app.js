@@ -30,7 +30,7 @@ app.post('/test', (req, res) => {
     res.json(result);
 });
 app.get('/', (req, res, next) => {
-    res.send('Welcome to Carrot-Job Project.');
+    res.send('Welcome to Carrot-Job Project!!');
 });
 app.use((req, res, next) => {
     res.status(404).send('Not available!!');

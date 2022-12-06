@@ -15,10 +15,9 @@ export function connectRedis() {
         client = createClient({
             legacyMode: true,
             url: `redis://${config.redis.username}:${config.redis.password}@${config.redis.host}:${config.redis.port}`,
-            // socket: {
-            //     host: config.redis.host,
-            //     port: config.redis.port
-            // },
+            socket: {
+                connectTimeout: 50000,
+            },
         });
         client.on('error', (err) => console.log('Redis Client Error', err));
         client.connect().then(() => console.log('Redis Connected'));
