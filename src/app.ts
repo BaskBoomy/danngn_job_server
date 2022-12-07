@@ -16,6 +16,7 @@ const corsOption = {
     optionsSuccessStatus: 200,
     credentials: true, // allow the Access-Control-Allow-Credentials
 };
+const version = '1';
 app.use(cors(corsOption));
 app.use(cookieParser());
 app.use(helmet());
@@ -47,6 +48,6 @@ app.use((error: ErrorRequestHandler, req : Request,res: Response, next: NextFunc
 connectDB().then(db=>{
     console.log('DB에 연결되었습니다.');
     connectRedis();
-    app.listen(config.host.port, ()=> console.log("listening on port 8080"));
+    app.listen(config.host.port, ()=> console.log(`[Version ${version}]: listening on port 8080`));
 })
 .catch(console.error);

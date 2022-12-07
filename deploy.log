@@ -1,0 +1,12 @@
+run after_install.sh: 
+cd / home/ec2-user/nodejs-server-cicd
+npm install
+run after_install.sh: 
+cd / home/ec2-user/nodejs-server-cicd
+npm install
+run after_install.sh: 
+cd / home/ec2-user/nodejs-server-cicd
+npm install
+run after_install.sh: 
+cd / home/ec2-user/nodejs-server-cicd
+npm install
