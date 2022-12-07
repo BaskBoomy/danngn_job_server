@@ -37,6 +37,7 @@ app.get('/', (req : Request,res: Response, next: NextFunction)=>{
     res.send(`<html>
     <body>
         <h1 style="color:#FF7E36;text-align: center;margin-top: 100px;"> Welcome to Danngn-Job Project!</h1>
+        <h3 style="color:#FF7E36;text-align: center;margin-top: 100px;"> Nodejs - AWS</h1>
     </body>
    </html>`);
 })
