@@ -3,17 +3,19 @@ os: linux
 files:
   - source: /
     destination: /home/ec2-user/danngn_job_server
+    overwrite: yes
+file_exists_behavior: OVERWRITE
 permissions:
   - object: /home/ec2-user/danngn_job_server
-    owner: jack
-    group: jack
+    owner: root
+    group: root
 hooks:
 # ApplicationStop:
 # DownloadBundle:
-#  BeforeInstall:
-#    - location: scripts/before_install.sh
-#      timeout: 300
-#      runas: root
+ BeforeInstall:
+   - location: scripts/before_install.sh
+     timeout: 300
+     runas: root
 # Install:
   AfterInstall:
     - location: scripts/after_install.sh
