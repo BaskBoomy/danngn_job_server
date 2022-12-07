@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "concurrently \"tsc -w\" \"nodemon dist/app\"",
-    "start": "concurrently \"tsc\" \"nodemon dist/app\"",
+    "start": "tsc && node dist/app.js",
     "dev": "node --loader ts-node/esm src/app.ts",
     "build": "tsc"
   },
