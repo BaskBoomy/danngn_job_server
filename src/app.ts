@@ -48,6 +48,6 @@ app.use((error: ErrorRequestHandler, req : Request,res: Response, next: NextFunc
 connectDB().then(db=>{
     console.log('DB에 연결되었습니다.');
     connectRedis();
-    app.listen(config.host.port, ()=> console.log(`[Version ${version}]: listening on port 8080`));
+    app.listen(config.host.port, ()=> console.log(`[Version ${version}]: listening on port ${config.host.port}`));
 })
 .catch(console.error);
