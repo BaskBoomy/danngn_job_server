@@ -5,8 +5,8 @@
   "main": "app.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "concurrently \"tsc -w\" \"nodemon dist/app\"",
+    "test": "concurrently \"tsc -w\" \"nodemon dist/app\"",
+    "start": "concurrently \"tsc\" \"nodemon dist/app\"",
     "dev": "node --loader ts-node/esm src/app.ts",
     "build": "tsc"
   },
