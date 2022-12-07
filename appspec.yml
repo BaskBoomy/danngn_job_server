@@ -3,6 +3,11 @@ os: linux
 files:
   - source: /
     destination: /home/ec2-user/danngn_job_server
+permissions:
+  - object: /home/ec2-user/danngn_job_server
+    pattern: "**"
+    owner: jack
+    group: jack
 hooks:
 # ApplicationStop:
 # DownloadBundle:
