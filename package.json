@@ -9,7 +9,7 @@
     "start": "tsc && node dist/app.js",
     "dev": "node --loader ts-node/esm src/app.ts",
     "build": "tsc",
-    "pm2" : "tsc && pm2 start ecosystem.config.cjs"
+    "pm2" : "tsc && pm2 reload ecosystem.config.cjs --env production"
   },
   "keywords": [],
   "author": "",
