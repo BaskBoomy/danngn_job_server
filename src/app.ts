@@ -36,10 +36,7 @@ app.post('/test',(req : Request,res: Response)=>{
 app.get('/', (req : Request,res: Response, next: NextFunction)=>{
     res.send(`<html>
     <body>
-        <h1 style="color:blue;text-align: center;margin-top: 100px;"> Welcome to Danngn-Job Project!!'</h1>
-        <div style="position: fixed;top: 50%;left: 50%;transform: translate(-50%, -50%)">
-            <img src="https://res.cloudinary.com/dcizjmtey/image/upload/v1668500001/egxocvnoxyvoyfvrl3ky.png">
-        </div>
+        <h1 style="color:#FF7E36;text-align: center;margin-top: 100px;"> Welcome to Danngn-Job Project!</h1>
     </body>
    </html>`);
 })
