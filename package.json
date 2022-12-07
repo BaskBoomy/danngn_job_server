@@ -8,7 +8,8 @@
     "test": "concurrently \"tsc -w\" \"nodemon dist/app\"",
     "start": "tsc && node dist/app.js",
     "dev": "node --loader ts-node/esm src/app.ts",
-    "build": "tsc"
+    "build": "tsc",
+    "pm2" : "tsc && pm2 start ecosystem.config.cjs"
   },
   "keywords": [],
   "author": "",
