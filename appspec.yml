@@ -20,7 +20,9 @@ hooks:
   AfterInstall:
     - location: scripts/after_install.sh
       timeout: 300
+      runas: root
   ApplicationStart:
     - location: scripts/deploy.sh
       timeout: 300
+      runas: root
 # ValidateService:
