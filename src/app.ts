@@ -34,7 +34,14 @@ app.post('/test',(req : Request,res: Response)=>{
     res.json(result);
 })
 app.get('/', (req : Request,res: Response, next: NextFunction)=>{
-    res.send('Welcome to Carrot-Job Project!!');
+    res.send(`<html>
+    <body>
+        <h1 style="color:blue;text-align: center;margin-top: 100px;"> Welcome to Danngn-Job Project!!'</h1>
+        <div style="position: fixed;top: 50%;left: 50%;transform: translate(-50%, -50%)">
+            <img src="https://res.cloudinary.com/dcizjmtey/image/upload/v1668500001/egxocvnoxyvoyfvrl3ky.png">
+        </div>
+    </body>
+   </html>`);
 })
 
 app.use((req : Request,res: Response, next: NextFunction)=>{
