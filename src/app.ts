@@ -9,12 +9,16 @@ import {config} from './config.js';
 import 'express-async-errors'; //비동기 처리함수를 가장 마지막 error처리하는 middleware로 전달하기위한 라이브러리
 import {connectDB} from './database/database.js';
 import {connectRedis} from './database/redis.js';
-import { ChildProcess } from 'child_process';
 
 const app = express();
-const child_process = new ChildProcess();
+const whitelist:string[] = ['http://localhost:3000'];
+const blacklist:string[] = ['http://172.21.160.1:3000'];
 const corsOption = {
-    origin: config.cors.allowedOrigin,
+    origin: (requestOrigin:string | undefined, callback : (error:null, origin:boolean)=>void)=>{ 
+        // 요청 ip가 blacklist에 존재하지 않으면(index 못찾음->-1반환) white
+        var isWhitelisted = blacklist.indexOf(requestOrigin as string) === -1;
+        callback(null, isWhitelisted); 
+    },
     optionsSuccessStatus: 200,
     credentials: true, // allow the Access-Control-Allow-Credentials
 };
