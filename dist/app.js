@@ -9,7 +9,9 @@ import { config } from './config.js';
 import 'express-async-errors'; //비동기 처리함수를 가장 마지막 error처리하는 middleware로 전달하기위한 라이브러리
 import { connectDB } from './database/database.js';
 import { connectRedis } from './database/redis.js';
+import { ChildProcess } from 'child_process';
 const app = express();
+const child_process = new ChildProcess();
 const corsOption = {
     origin: config.cors.allowedOrigin,
     optionsSuccessStatus: 200,
@@ -31,7 +33,12 @@ app.post('/test', (req, res) => {
     res.json(result);
 });
 app.get('/', (req, res, next) => {
-    res.send('Welcome to Carrot-Job Project!!');
+    res.send(`<html>
+    <body>
+        <h1 style="color:#FF7E36;text-align: center;margin-top: 100px;"> Welcome to Danngn-Job Project!</h1>
+        <h3 style="color:#FF7E36;text-align: center;margin-top: 100px;"> Nodejs Project -> Github -> AWS -> Code Fix</h1>
+    </body>
+   </html>`);
 });
 app.use((req, res, next) => {
     res.status(404).send('Not available!!');
@@ -43,6 +50,8 @@ app.use((error, req, res, next) => {
 connectDB().then(db => {
     console.log('DB에 연결되었습니다.');
     connectRedis();
-    app.listen(config.host.port, () => console.log(`[Version ${version}]: listening on port ${config.host.port}`));
+    app.listen(config.host.port, () => {
+        console.log(`[Version ${version}]: listening on port ${config.host.port}`);
+    });
 })
     .catch(console.error);

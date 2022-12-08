@@ -9,8 +9,10 @@ import {config} from './config.js';
 import 'express-async-errors'; //비동기 처리함수를 가장 마지막 error처리하는 middleware로 전달하기위한 라이브러리
 import {connectDB} from './database/database.js';
 import {connectRedis} from './database/redis.js';
+import { ChildProcess } from 'child_process';
 
 const app = express();
+const child_process = new ChildProcess();
 const corsOption = {
     origin: config.cors.allowedOrigin,
     optionsSuccessStatus: 200,
@@ -53,6 +55,8 @@ app.use((error: ErrorRequestHandler, req : Request,res: Response, next: NextFunc
 connectDB().then(db=>{
     console.log('DB에 연결되었습니다.');
     connectRedis();
-    app.listen(config.host.port, ()=> console.log(`[Version ${version}]: listening on port ${config.host.port}`));
+    app.listen(config.host.port, ()=>{
+        console.log(`[Version ${version}]: listening on port ${config.host.port}`);
+    });
 })
 .catch(console.error);
