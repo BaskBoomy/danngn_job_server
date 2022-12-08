@@ -29,6 +29,8 @@ export const isAuth = async (req: RequestData, res: Response, next: NextFunction
         token = req.cookies['token'];
     }
 
+    console.log(token);
+    
     if (!token) {
         return res.status(401).json(AUTH_ERROR);
     }
@@ -38,6 +40,7 @@ export const isAuth = async (req: RequestData, res: Response, next: NextFunction
         config.jwt.secretKey,
         async (error: any, decoded: any)=> {
             if (error) {
+                console.log(error);                
                 res.status(401).json(AUTH_ERROR);
             }else{
                 const user = await userRepository.findById(decoded!.id);
