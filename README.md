@@ -1,8 +1,5 @@
-# 프로젝트명
-
-> 당근 알바 클론 코딩 프로젝트
-
-NodeJS와 ReactJS를 활용한 당근 알바 서비스를 구현한 프로젝트입니다.
+# 당근 알바 클론 코딩 프로젝트
+> NodeJS와 ReactJS를 활용한 당근 알바 서비스를 구현한 프로젝트입니다.
 
 - [당근 알바 javascript server code & front code](https://github.com/BaskBoomy/danngn_job_server)
 - [API with GraphQL](https://github.com/BaskBoomy/daangn_job_server_graphql)
